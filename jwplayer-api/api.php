@@ -91,9 +91,17 @@
 
             return $args;
         }
-        function getMediaInfo()
+        function getMediaInfo($mediaData)
         {
-
+            $media = array();
+            $media_array_data = json_decode(json_encode($mediaData), True);
+            $media['title'] = $media_array_data['title'];
+            $media['description'] = $media_array_data['description'];
+            $media['image'] = $media_array_data['playlist'][0]['image'];
+            $media['thumbnail'] = $media_array_data['playlist'][0]['tracks'][0]['file'];
+            $media['duration'] = gmdate("H:i:s",$media_array_data['playlist'][0]['duration']);
+            
+            return $media;
         }
 
             // Construct call URL

@@ -13,13 +13,9 @@
 <body>
 <?php 
       $objJwpalyer =  new JwplatformAPI('key','sec');
-      $mediaData = $objJwpalyer->call('v2/media/rImdhiX9',array('format'=>'json'));
-      $media_array_data = json_decode(json_encode($mediaData), True);
-      $media_title = $media_array_data['title'];
-      $media_description = $media_array_data['description'];
-      $media_image = $media_array_data['playlist'][0]['image'];
-      $media_thumbnail = $media_array_data['playlist'][0]['tracks'][0]['file'];
-      $media_duration = $media_array_data['playlist'][0]['duration'];
+      $mediaAPIData = $objJwpalyer->call('v2/media/rImdhiX9',array('format'=>'json'));
+      $mediaData = $objJwpalyer->getMediaInfo($mediaAPIData);
+      $objJwpalyer->dd($mediaData);
       //list videos
       $videosData = $objJwpalyer->call('v2/playlists/WXu7kuaW',array('format'=>'json'));
       $list_videos_data = json_decode(json_encode($videosData), True);
@@ -34,7 +30,7 @@
          
       }
        
-die();
+
 ?>
 <div class="header">
   <h1>My Website</h1>
