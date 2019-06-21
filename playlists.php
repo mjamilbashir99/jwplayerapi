@@ -37,10 +37,10 @@ table#t01 th {
 <table id="t01">
 	  <tr>
 	    <th>Title</th>
-	    <th>description</th> 
-	    <th>image</th>
-	    <th>thumbnaile</th>
-	    <th>duration</th>
+	    <th>Description</th> 
+	    <th>Image</th>
+	    <th>Thumbnaile</th>
+	    <th>Duration</th>
 	  </tr>
 	<?php for($i=0;$i<count($videPlayListData);$i++){?>
 	  <tr>
