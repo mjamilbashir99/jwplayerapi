@@ -14,8 +14,26 @@
 <?php 
       $objJwpalyer =  new JwplatformAPI('key','sec');
       $mediaData = $objJwpalyer->call('v2/media/rImdhiX9',array('format'=>'json'));
+      $media_array_data = json_decode(json_encode($mediaData), True);
+      $media_title = $media_array_data['title'];
+      $media_description = $media_array_data['description'];
+      $media_image = $media_array_data['playlist'][0]['image'];
+      $media_thumbnail = $media_array_data['playlist'][0]['tracks'][0]['file'];
+      $media_duration = $media_array_data['playlist'][0]['duration'];
+      //list videos
+      $videosData = $objJwpalyer->call('v2/playlists/WXu7kuaW',array('format'=>'json'));
+      $list_videos_data = json_decode(json_encode($videosData), True);
+      $playlists = $list_videos_data['playlist'];
       
-      $objJwpalyer->dd($mediaData);
+      for ($i=0;$i<count($playlists);$i++) {
+        $videos_title = $playlists[$i]['title'];
+        $videos_description = $playlists[$i]['description'];
+        $videos_image = $playlists[$i]['image'];
+        $videos_thumbnaile = $playlists[$i]['tracks'][0]['file'];
+        $videos_duration = $playlists[$i]['duration'];
+         
+      }
+       
 die();
 ?>
 <div class="header">

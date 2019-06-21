@@ -98,7 +98,7 @@
 
             // Construct call URL
         private function _call_url($call, $args=array()) {
-           echo $url = $this->_url . $call . '?' . http_build_query($this->_args($args), "", "&");
+            $url = $this->_url . $call . '?' . http_build_query($this->_args($args), "", "&");
             return $url;
         }
 
