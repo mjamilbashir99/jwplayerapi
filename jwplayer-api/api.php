@@ -103,6 +103,22 @@
             
             return $media;
         }
+        function getVideoListInfo ($videosData) {
+
+            $list_videos_data = json_decode(json_encode($videosData), True);
+            $playlists = $list_videos_data['playlist'];
+            $videoPlayLists = array();
+            for ($i=0;$i<count($playlists);$i++) {
+                $videos_data = array();
+                $videos_data['title'] = $playlists[$i]['title'];
+                $videos_data['description'] = $playlists[$i]['description'];
+                $videos_data['image'] = $playlists[$i]['image'];
+                $videos_data['thumbnaile'] = $playlists[$i]['tracks'][0]['file'];
+                $videos_data['duration'] = gmdate("H:i:s",$playlists[$i]['duration']);
+                $videoPlayLists[] =$videos_data;
+            }
+            return $videoPlayLists;
+        }
 
             // Construct call URL
         private function _call_url($call, $args=array()) {
